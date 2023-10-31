@@ -1,0 +1,10 @@
+
+<app-card titulo="Editar usuario">
+
+    <app-formulario-usuario 
+    *ngIf="modelo" 
+    (datosFormulario)="guardarCambios($event)" 
+    #formularioHijo 
+    [modelo]="modelo" 
+    ></app-formulario-usuario>
+</app-card>

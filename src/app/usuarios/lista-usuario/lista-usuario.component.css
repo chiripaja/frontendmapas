@@ -1,0 +1,9 @@
+.mat-mdc-header-cell,.mat-mdc-cell{  
+  width: 100%;
+  
+}
+
+mat-row td{
+  width: 100%;
+  height: 40px;
+}

@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="GuardarCambios()">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Usuario</mat-label>
+      <input matInput placeholder="Ingrese Usuario" formControlName="usuario">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Ingrese Contraseña"  formControlName="password">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Ingrese Nombre" formControlName="nombre">
+    </mat-form-field>
+  </p>  
+  <button mat-raised-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
+</form>

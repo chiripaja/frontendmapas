@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: gray;
+}
+
+mat-card {
+    max-width: 350px;
+    width: 100%;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+}
