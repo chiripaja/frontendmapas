@@ -18,15 +18,23 @@ export class AuthService {
     if (!token){
       return of(false)
     }
-    let expiracion=localStorage.getItem(this.llaveExp) || new Date('1993-01-01');
+    const expiracion:any=localStorage.getItem(this.llaveExp);
+   
+    let expiracionfecha = new Date(expiracion*1000)
 
-    let expiracionfecha = new Date(expiracion)
+    console.log(localStorage.getItem(this.llavetoken))
+    console.log(expiracionfecha)
+    console.log(new Date())
     if(expiracionfecha<=new Date()){
       this.logout();
       return of(false);
     }
+
+
+
     return of(true);
   }
+  
 
   logout(){
     localStorage.removeItem(this.llavetoken);
@@ -38,7 +46,8 @@ export class AuthService {
   }
   
   guardarToken(iresauth:Iresauth){
-    console.log(iresauth)
+
+
     localStorage.setItem(this.llavetoken,iresauth.token);
     localStorage.setItem(this.llaveExp,iresauth.expiracion.toString());
   }
