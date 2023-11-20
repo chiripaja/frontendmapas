@@ -16,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './utils/card/card.component';
 import { PobladosmapaComponent } from './poblado/pobladosmapa/pobladosmapa.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { PobladoinfoComponent } from './poblado/pobladoinfo/pobladoinfo.component';
+import { PruebamapaComponent } from './poblado/pruebamapa/pruebamapa.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     FormularioUsuarioComponent,
     AdminComponent,
     CardComponent,
-    PobladosmapaComponent
+    PobladosmapaComponent,
+    PobladoinfoComponent,
+    PruebamapaComponent
   ],
   imports: [
     BrowserModule,

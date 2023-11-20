@@ -1,11 +1,68 @@
 <app-card titulo="Mapas">
-    <div 
-     leaflet 
-     [leafletOptions]="options"  
-   
+    <form [formGroup]="form" (ngSubmit)="guardarCambios(this.form.value)" class="container">  
+        <mat-form-field class="item">
+          <mat-label>Provincia</mat-label>
+          <mat-select formControlName="provinciacod" (valueChange)="limpiar()" >             
+                  <mat-option *ngFor="let provincia of provincias" [value]="provincia.codigo"
+                      >{{provincia.provincia}}</mat-option>             
+          </mat-select>
+      </mat-form-field>     
+
+        <mat-form-field *ngIf="distritos && distritos.length>0" class="item">
+          <mat-label>Distrito</mat-label>
+          <mat-select formControlName="distritocod" >             
+                  <mat-option *ngFor="let distrito of distritos" [value]="distrito.codigo"
+                      >{{distrito.distrito}}</mat-option>             
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="poblados && poblados.length>0" class="item">
+          <mat-label>Centro Poblado</mat-label>
+          <mat-select formControlName="pobladocod" >             
+                  <mat-option *ngFor="let poblado of poblados" [value]="poblado.id"
+                      >{{poblado.centro_poblado}}</mat-option>             
+          </mat-select>
+        </mat-form-field>
+
+
+        <button
+        *ngIf="false"
+        type="submit"
+        mat-flat-button
+        color="primary"
+        [disabled]="!form.valid"
      
+      >
+        Submit
+      </button>
+    </form>
+
+<div class="container">
+  <div class="item">
+    <div style="height: 600px;"
+     leaflet 
+     [leafletOptions]="options"
+     (leafletClick)="manejarclick($event)"
+     (leafletMapReady)="onMapReady($event)"
      >
      <div [leafletLayers]="capas"></div>
-     <div  [leafletLayers]="circulosDraw"></div>
+    </div>
+  </div>
+
+  <div  *ngIf="DatosCentrosPoblados" class="item">  
+    <app-pobladoinfo [poblado]="DatosCentrosPoblados"></app-pobladoinfo>
+  </div>
+
 </div>
+<div class="container">
+ 
+</div>
+ 
+
+
+ 
+
+
+
+
 </app-card>

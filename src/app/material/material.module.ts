@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [],
   imports: [
@@ -26,7 +27,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     MatCardModule,
     MatTableModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

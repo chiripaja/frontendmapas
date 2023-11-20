@@ -9,18 +9,20 @@ import { FormularioUsuarioComponent } from './usuarios/formulario-usuario/formul
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { PobladosmapaComponent } from './poblado/pobladosmapa/pobladosmapa.component';
 import { esAdminGuard } from './es-admin.guard';
+import { PruebamapaComponent } from './poblado/pruebamapa/pruebamapa.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'usuariossss', component: ListaUsuarioComponent },
   {
-    path: 'admin', component: AdminComponent, canActivate: [esAdminGuard],
+    path: 'admin', component: AdminComponent, 
     children: [
       { path: '', redirectTo: 'usuario', pathMatch: 'full' },
       { path: 'usuario', component: ListaUsuarioComponent },
       { path: 'crear', component: CrearUsuarioComponent },
       { path: 'editar/:id', component: EditarUsuarioComponent },
-      { path: 'poblado', component: PobladosmapaComponent }
+      { path: 'poblado', component: PobladosmapaComponent },
+      { path: 'pobladoprueba', component: PruebamapaComponent },
     ]
   },
 
