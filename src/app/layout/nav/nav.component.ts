@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -10,11 +11,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
+  router = inject(Router)
+  authservices=inject(AuthService)
   
-  constructor(private authservices:AuthService) {
-    
-    
-  }
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -25,7 +24,7 @@ export class NavComponent {
     );
 
     salir(){
-      console.log("entrando")
-      this.authservices.logout()
+      this.authservices.logout();
+      this.router.navigate(['/'])
     }
 }

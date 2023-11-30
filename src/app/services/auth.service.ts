@@ -9,10 +9,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiURL=environment.apiURL+'auth';
+  private apiURL=environment.apiURL+'user/auth';
   private readonly llavetoken='token' ;
   private readonly llaveExp='token-exp';
   constructor(private http:HttpClient) { }
+
+
+
   autenticado():Observable<Boolean>{
     const token=localStorage.getItem(this.llavetoken);
     if (!token){
@@ -38,17 +41,13 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem(this.llavetoken);
-    localStorage.removeItem(this.llaveExp)
   }
 
-  login(icredenciales:Icredenciales):Observable<Iresauth>{
-    return this.http.post<Iresauth>(this.apiURL,icredenciales)
+  login(icredenciales:Icredenciales):Observable<any>{
+    return this.http.post<any>(this.apiURL,icredenciales)
   }
   
-  guardarToken(iresauth:Iresauth){
-
-
-    localStorage.setItem(this.llavetoken,iresauth.token);
-    localStorage.setItem(this.llaveExp,iresauth.expiracion.toString());
+  guardarToken(data:string){
+    localStorage.setItem(this.llavetoken,data);  
   }
 }

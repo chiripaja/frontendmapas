@@ -12,6 +12,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -28,7 +32,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressBarModule
   ]
 })
 export class MaterialModule { }

@@ -13,4 +13,7 @@ export class PobladoService {
   public findByUbigeo(id:any):Observable<Ipoblado[]>{
     return this.http.get<Ipoblado[]>(`${this.apiURL}/findByUbigeo/${id}`);
   }
+  public findAll():Observable<Ipoblado[]>{
+    return this.http.get<Ipoblado[]>(this.apiURL)
+  }
 }

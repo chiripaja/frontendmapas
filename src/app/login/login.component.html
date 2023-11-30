@@ -1,22 +1,37 @@
 <div class="container">
 <mat-card>
+      
   <mat-card-header>
-    <mat-card-title>Iniciar sesión</mat-card-title>
+    <img src="./assets/img/logoMTC.png" alt="" class="img-log">  
+  
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-        
-      <mat-form-field appearance="outline">
+     
+  
+      <mat-form-field appearance="outline" class="mt-3">
         <mat-label>Usuario</mat-label>
         <input matInput placeholder="Ingrese Usuario" formControlName="usuario">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre('usuario')}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="mt-2">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Ingrese Contraseña" type="password" formControlName="password">
+        <input matInput placeholder="Ingrese Contraseña" type="password" formControlName="password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre('password')}}</mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" [disabled]="form.invalid">Iniciar sesión</button>
+      <button mat-raised-button color="primary" [disabled]="form.invalid" class="mt-2">
+      
+        Iniciar sesión
+        
+      </button>
+
+      
     </form>
   </mat-card-content>
 </mat-card>

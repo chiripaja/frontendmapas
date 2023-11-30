@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IUsuario } from '../interfaces/iusuario';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -14,6 +14,7 @@ export class UsuarioService {
   private apiURL=environment.apiURL+'user';
 
   public findAll(): Observable<IUsuario[]>{
+    
     return this.http.get<IUsuario[]>(this.apiURL);
   }
 
@@ -23,6 +24,14 @@ export class UsuarioService {
 
   public create(usuario:IUsuario){
     return this.http.post(this.apiURL,usuario)
+  }
+
+  createHeaders(){
+    return {
+      headers:new HttpHeaders({
+        'Authorization':localStorage.getItem('token')!
+      })
+    }
   }
   
 }

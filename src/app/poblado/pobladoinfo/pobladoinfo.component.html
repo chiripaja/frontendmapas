@@ -2,7 +2,7 @@
 
 <section class="distrito-info">
     <h1>Centro Poblado de <b>{{poblado?.centro_poblado}}</b></h1>
-    <p class="descripcion">Bienvenido al hermoso distrito XYZ. Este distrito tiene una rica historia y ofrece una variedad de actividades para residentes y visitantes por igual.</p>
+    <p class="descripcion">Informacion sobre el centro poblado de {{poblado?.centro_poblado}}.En el siguiente cuadro podra visualizar informacion detallada sobre el centro poblado en mencion : </p>
     
     <div class="detalle-info">
       <div class="info-item">
@@ -10,17 +10,30 @@
         <ul>
           <li>Latitud:{{poblado?.latitud}}</li>
           <li>Latitud:{{poblado?.longitud}}</li>
-          <li>Altitud: {{poblado?.poblacion}}</li>
-          <li>Idioma: {{poblado?.altitud}}</li>
+          <li>Altitud: {{poblado?.altitud}}</li>
+          <li>Idioma: {{poblado?.idioma_lengua}}</li>
+          <li>Poblacion: {{poblado?.poblacion}}</li>
+          <li>Vivienda: {{poblado?.vivienda}}</li>
+          <li>I.E. Primaria: {{poblado?.iiee_primaria}}</li>
+          <li>I.E. Secundaria: {{poblado?.iiee_secundaria}}</li>
+          <li>Puesto de Salud: {{poblado?.puesto_salud}}</li>
+          <li>Puesto de Policial: {{poblado?.puesto_policial}}</li>
         </ul>
       </div>
 
       <div class="info-item">
         <h2>Servicios</h2>
         <ul>
-          <li>Escuelas</li>
-          <li>Hospitales</li>
-          <li>Transporte Público</li>
+          <li>Agua: {{poblado?.agua}}</li>
+          <li>Electricidad:{{poblado?.electricidad}}</li>
+          <li>Desague:{{poblado?.desague}}</li>
+          <li>Alumbrado Publico:{{poblado?.alumbrado_publico}}</li>
+          <li>Telefono Publico:{{poblado?.telefono_publico}}</li>
+          <li>Hotel:{{poblado?.hostal}}</li>
+          <li>Cabina de Internet: {{poblado?.cabina_internet}}</li>
+          <li>Via: {{poblado?.via_mayor_uso?poblado?.via_mayor_uso:'-'}}</li>
+          <li>Transporte: {{poblado?.transporte_mayor_uso?poblado?.transporte_mayor_uso:'-'}}</li>
+          <li>Local Comunal: {{poblado?.local_comunal}}</li>
         </ul>
       </div>
     </div>

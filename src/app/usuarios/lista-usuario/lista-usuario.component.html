@@ -1,33 +1,34 @@
 <app-card titulo="Lista Usuarios">
-  
+
   <a [routerLink]="['../crear']" mat-flat-button color="primary">Crear</a>
   <table
     mat-table
-    [dataSource]="UsuarioLista"   
+    matSort 
+    [dataSource]="datasource"   
     #tabla1
   >
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>id</th>
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>id</th>
       <td mat-cell *matCellDef="let data">{{ data.id }}</td>
     </ng-container>
 
     <ng-container matColumnDef="usuario">
-      <th mat-header-cell *matHeaderCellDef>usuario</th>
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>usuario</th>
       <td mat-cell *matCellDef="let data">{{ data.usuario }}</td>
     </ng-container>
 
     <ng-container matColumnDef="password">
-      <th mat-header-cell *matHeaderCellDef>password</th>
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>password</th>
       <td mat-cell *matCellDef="let data">{{ data.password }}</td>
     </ng-container>
 
     <ng-container matColumnDef="rol">
-      <th mat-header-cell *matHeaderCellDef>rol</th>
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>rol</th>
       <td mat-cell *matCellDef="let data">{{ data.rol }}</td>
     </ng-container>
 
     <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let data">
        
         <a
@@ -42,4 +43,12 @@
     <mat-header-row *matHeaderRowDef="ColumnasMostrar"></mat-header-row>
     <mat-row *matRowDef="let row; columns: ColumnasMostrar"></mat-row>
   </table>
+  <ng-container footer >
+    <mat-paginator 
+    [pageSizeOptions]="[5,10,20]"
+    [showFirstLastButtons]="true"
+    >
+
+    </mat-paginator>
+</ng-container>
 </app-card>
