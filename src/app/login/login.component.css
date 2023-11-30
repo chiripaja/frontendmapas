@@ -12,7 +12,9 @@ mat-card {
     align-items: center;
     background-color: #fff;
 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 12px 53px -12px rgba(0,0,0,0.68);
+    -webkit-box-shadow: 10px 12px 53px -12px rgba(0,0,0,0.68);
+    -moz-box-shadow: 10px 12px 53px -12px rgba(0,0,0,0.68);
   overflow: hidden;
 }
 
@@ -33,3 +35,8 @@ button {
 .cabezera{
     text-align: center;
 }
+
+
+.animate__animated.animate__fadeIn {
+    --animate-duration: 2s;
+  }
