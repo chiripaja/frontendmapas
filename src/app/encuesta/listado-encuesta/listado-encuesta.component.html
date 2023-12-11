@@ -1,0 +1,123 @@
+<div class="container ">
+  <mat-card class="animate__animated animate__fadeIn">
+
+    <mat-card-header>
+      <img src="./assets/img/logoMTC.png" alt="" class="img-log animate__animated animate__fadeIn ">
+
+    </mat-card-header>
+    <mat-card-content>
+
+      <form action="" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        <ol>
+          <li *ngFor="let pregunta of preguntas" value={{pregunta.id}}>
+             {{pregunta.nompreg}}
+
+            <div [ngSwitch]="pregunta.id">
+              <div *ngSwitchCase="'1'">
+                <mat-form-field class="item">
+                  <mat-label>Provincia</mat-label>
+                  <mat-select formControlName="1" (valueChange)="limpiar()">
+                    <mat-option *ngFor="let provincia of provincias" [value]="provincia.codigo">{{provincia.provincia}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div *ngSwitchCase="'2'">
+                <mat-form-field class="item">
+                  <mat-label>Distrito</mat-label>
+                  <mat-select formControlName="2">
+                    <mat-option *ngFor="let distrito of distritos" [value]="distrito.codigo">{{distrito.distrito}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div *ngSwitchCase="'3'">
+                <mat-form-field class="item">
+                  <mat-label>Centro Poblado</mat-label>
+                  <mat-select formControlName="3">
+                    <mat-option *ngFor="let poblado of poblados" [value]="poblado.centro_poblado">{{poblado.centro_poblado}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div *ngSwitchCase="'4'">Contenido para Opción 2</div>
+              <div *ngSwitchCase="'5'">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="5">
+                  <mat-radio-button class="example-radio-button" value="SI">SI</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="NO">NO</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div *ngSwitchCase="'6'">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="6">
+                  <mat-radio-button class="example-radio-button" value="Movistar">Movistar.</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="Claro">Claro.</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="Entel">Entel.</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="BITEL">BITEL.</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="OTRO">OTRO</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div *ngSwitchCase="'7'">             
+                  <mat-form-field appearance="outline">
+                    <mat-label>Especificar</mat-label>
+                    <input matInput placeholder="Escribir la cantidad en Megabit por segundo." formControlName="7">                    
+                  </mat-form-field>               
+              </div>
+              <div *ngSwitchCase="'8'">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="8">
+                  <mat-radio-button class="example-radio-button" value="SI">SI</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="NO">NO</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div *ngSwitchCase="'9'">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="9">
+                  <mat-radio-button class="example-radio-button" value="1">Es muy lento.</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="2">Generalmente se cuelga.</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="3">Se cuenta con una tarifa de pocos megas.</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="4">Otro.</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div *ngSwitchCase="'10'">
+                <mat-form-field appearance="outline">
+                  <mat-label>Responsable</mat-label>
+                  <input matInput placeholder="Escribir la o las entidades que realizan el pago." formControlName="10">                    
+                </mat-form-field> 
+              </div>
+              <div *ngSwitchCase="'11'">
+                <mat-form-field appearance="outline">
+                  <mat-label>Costo</mat-label>
+                  <input matInput placeholder="Escribir el costo del servicio." formControlName="11">                    
+                </mat-form-field> 
+              </div>
+              <div *ngSwitchCase="'12'">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nombres Completos</mat-label>
+                  <input matInput placeholder="Escribir los nombres y apellidos." formControlName="12">                    
+                </mat-form-field> 
+              </div>
+              <div *ngSwitchCase="'13'">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="13">
+                  <mat-radio-button class="example-radio-button" value="1">MASCULINO</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="2">FEMENINO</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div *ngSwitchCase="'14'">
+                <mat-form-field appearance="outline">
+                  <mat-label>(+51)</mat-label>
+                  <input matInput placeholder="Numero de celular (999888777)." formControlName="14">                    
+                </mat-form-field> 
+              </div>
+              <div *ngSwitchCase="'15'">
+                <mat-form-field appearance="outline">
+                  <mat-label>Ingresar</mat-label>
+                  <input matInput placeholder="Registrar correo electronico." formControlName="15">                    
+                </mat-form-field> 
+              </div>
+            </div>
+          </li>
+         
+           
+        
+        </ol>
+        <button mat-flat-button color="primary">Guardar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

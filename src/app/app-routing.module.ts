@@ -9,6 +9,7 @@ import { PobladosmapaComponent } from './poblado/pobladosmapa/pobladosmapa.compo
 import { ListaPobladoComponent } from './poblado/lista-poblado/lista-poblado.component';
 import { authenticateGuard } from './guards/authenticate.guard';
 import { logeatedGuard } from './guards/logeated.guard';
+import { ListadoEncuestaComponent } from './encuesta/listado-encuesta/listado-encuesta.component';
 
 
 const routes: Routes = [
@@ -22,10 +23,11 @@ const routes: Routes = [
       { path: 'crear', component: CrearUsuarioComponent },
       { path: 'editar/:id', component: EditarUsuarioComponent },
       { path: 'Mapa', component: PobladosmapaComponent },
-      { path: 'poblados', component: ListaPobladoComponent }
+      { path: 'poblados', component: ListaPobladoComponent },
+     
     ]
   },
-
+  { path: 'encuesta', component: ListadoEncuestaComponent },
   { path: '**', redirectTo: '' }
 ];
 

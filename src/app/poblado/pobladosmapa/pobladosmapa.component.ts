@@ -47,9 +47,7 @@ export class PobladosmapaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.provinciaServices.findall().subscribe(data => this.provincias = data)
-
     this.form.valueChanges.subscribe(valores => {
       valores?.provinciacod ? this.buscarDistrito(valores?.provinciacod) : null,
         valores?.distritocod ? this.buscarPoblado(valores?.distritocod) : null,
@@ -90,14 +88,10 @@ export class PobladosmapaComponent implements OnInit {
 
 
 
-  buscarDistrito(codprov: any) {
-   
-    if (codprov) {
-     
+  buscarDistrito(codprov: any) {   
+    if (codprov) {     
       const dato: Iprovincia | undefined = this.provincias.find(provincia => provincia.codigo === codprov);
       dato ? this.ubicarMapa(dato?.latitud1, dato?.longitud1, dato?.latitud2, dato?.longitud2) : ''
-
-
       this.distritoServices.findByIdProvincia(codprov).subscribe(data => {
         this.distritos = data
       })
@@ -106,8 +100,7 @@ export class PobladosmapaComponent implements OnInit {
   }
 
   buscarPoblado(coddistrito: any) {
-    
-    if (coddistrito) {      
+  if (coddistrito) {      
       const dato: Idistrito | undefined = this.distritos.find(distrito => distrito.codigo === coddistrito); 
       dato ? this.ubicarMapa(dato?.latitud1, dato?.longitud1, dato?.latitud2, dato?.longitud2,11) : ''
       this.pobladoServices.findByUbigeo(coddistrito).subscribe(data => {
@@ -117,8 +110,7 @@ export class PobladosmapaComponent implements OnInit {
     }
   }
   buscarMapaData(idpoblado: any) {
-    const dato: Ipoblado | undefined =this.DatosCentrosPoblados = this.poblados.find(poblado => poblado.id === idpoblado)
-    
+    const dato: Ipoblado | undefined =this.DatosCentrosPoblados = this.poblados.find(poblado => poblado.id === idpoblado)    
     dato ? this.ubicarMapa(dato?.latitud,dato.longitud, dato.latitud,dato.longitud,14) : ''
     this.capas = []
     if(dato?.latitud && dato?.longitud && dato.centro_poblado){

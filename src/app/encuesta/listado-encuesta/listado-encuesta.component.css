@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2e1df;
+}
+
+mat-card {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  max-width: 800px;
+  width: 100%;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 10px 12px 53px -12px rgba(0, 0, 0, 0.68);
+  -webkit-box-shadow: 10px 12px 53px -12px rgba(0, 0, 0, 0.68);
+  -moz-box-shadow: 10px 12px 53px -12px rgba(0, 0, 0, 0.68);
+  overflow: hidden;
+}
+
+mat-form-field {
+  margin-top: 1em;
+  width: 90%;
+}
+
+button {
+  width: 100%;
+}
+
+.img-log {
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.cabezera {
+  text-align: center;
+}
+
+
+.animate__animated.animate__fadeIn {
+  --animate-duration: 2s;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
