@@ -72,7 +72,7 @@
               <mat-radio-button class="example-radio-button" value="OTRO">OTRO</mat-radio-button>
             </mat-radio-group>
             <mat-form-field appearance="outline" *ngIf="InputProveedorOtro">
-              <mat-label>Otro Poderador </mat-label>
+              <mat-label>Otro Opoderador </mat-label>
               <input matInput placeholder="Especificar otra respuesta."
                 formControlName="respproveedorotro">
             </mat-form-field>
@@ -163,10 +163,12 @@
                 <mat-label>Ingresar</mat-label>
                 <input matInput placeholder="Registrar correo electronico." formControlName="rescorreo">
               </mat-form-field>
+            
+              
             </li>
         </ol>
 
-        <button mat-flat-button color="primary">Guardar</button>
+        <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar</button>
 
        
 

@@ -49,10 +49,10 @@ export class ListadoEncuestaComponent implements OnInit {
     resproblemotro: [''],
     resresponsable: [''],
     rescosto: [''],
-    resnomape: [''],    
+    resnomape: ['', Validators.required],    
     ressexo: [''],
-    resnumcelular: [''],
-    rescorreo: ['']
+    resnumcelular: ['', Validators.required],
+    rescorreo: ['', [Validators.required, Validators.email]]
   })
 
   ngOnInit(): void {  
@@ -71,7 +71,7 @@ export class ListadoEncuestaComponent implements OnInit {
   onSubmit() {      
     this.respuestas=this.form.value
     console.log(this.form.value)
-    //this.respuestaServices.create(this.respuestas).subscribe(data=>console.log(data))  
+    this.respuestaServices.create(this.respuestas).subscribe(data=>console.log(data))  
   }
 
 
