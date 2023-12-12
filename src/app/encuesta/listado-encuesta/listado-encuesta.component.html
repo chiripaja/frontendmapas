@@ -12,7 +12,7 @@
             PROVINCIA
             <mat-form-field class="item">
               <mat-label>Provincia</mat-label>
-              <mat-select formControlName="respprov">
+              <mat-select formControlName="respprov" (ngModelChange)="limpiar()">
                 <mat-option *ngFor="let provincia of provincias"
                   [value]="provincia.codigo">{{provincia.provincia}}</mat-option>
               </mat-select>
@@ -41,6 +41,13 @@
 
           <li>
             IE:
+            <mat-form-field class="item">
+              <mat-label>Colegio</mat-label>
+              <mat-select formControlName="respiiee">
+                <mat-option *ngFor="let colegio of colegios"
+                  [value]="colegio.IdInstitucion">{{colegio.NombreIE+' ('+colegio.NivelModalidad+')'}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </li>
 
           <li>
@@ -54,7 +61,7 @@
 
 
 
-          <li>
+          <li *ngIf="formInternetValidator">
             ¿QUE PROVEEDOR BRINDA EL SERVICIO DE INTERNET?
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
               formControlName="ressproveedor">
@@ -64,10 +71,15 @@
               <mat-radio-button class="example-radio-button" value="BITEL">BITEL.</mat-radio-button>
               <mat-radio-button class="example-radio-button" value="OTRO">OTRO</mat-radio-button>
             </mat-radio-group>
+            <mat-form-field appearance="outline" *ngIf="InputProveedorOtro">
+              <mat-label>Otro Poderador </mat-label>
+              <input matInput placeholder="Especificar otra respuesta."
+                formControlName="respproveedorotro">
+            </mat-form-field>
           </li>
 
 
-          <li>
+          <li *ngIf="formInternetValidator">
             ¿CUAL ES LA VELOCIDAD (EN MBPS) DEL SERVICIO DE INTERNET?
             <mat-form-field appearance="outline">
               <mat-label>Especificar</mat-label>
@@ -75,7 +87,7 @@
             </mat-form-field>
           </li>
 
-          <li>
+          <li *ngIf="formInternetValidator">
             ¿EL SERVICIO DE INTERNET DISPONIBLE PERMITE QUE EL PERSONAL REALICE SUS TAREAS EN LINEA SIN PROBLEMAS?
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
               formControlName="respermite">
@@ -85,7 +97,7 @@
           </li>
 
 
-          <li>
+          <li *ngIf="formInternetValidator">
             ¿CUAL ES EL PROBLEMA CON EL SERVICIO DE INTERNET?
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
               formControlName="resproblem">
@@ -95,9 +107,15 @@
                 megas.</mat-radio-button>
               <mat-radio-button class="example-radio-button" value="4">Otro.</mat-radio-button>
             </mat-radio-group>
+          
+            <mat-form-field appearance="outline" *ngIf="InputInternetOtro">
+              <mat-label>Otro Problema  </mat-label>
+              <input matInput placeholder="Indicar otro incoveniente."
+                formControlName="resproblemotro">
+            </mat-form-field>
           </li>
 
-            <li>
+            <li *ngIf="formInternetValidator">
               ¿CUAL ES LA ENTIDAD RESPONSABLE DEL PAGO DEL SERVICIO DE INTERNET?
               <mat-form-field appearance="outline">
                 <mat-label>Responsable</mat-label>
@@ -106,7 +124,7 @@
               </mat-form-field>
             </li>
 
-            <li>
+            <li *ngIf="formInternetValidator">
               ¿CUAL ES COSTO MENSUAL (EN S/) DEL SERVICIO DE INTERNET
               <mat-form-field appearance="outline">
                 <mat-label>Costo</mat-label>

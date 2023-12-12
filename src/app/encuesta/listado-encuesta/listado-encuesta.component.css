@@ -20,8 +20,26 @@ mat-card {
 
 mat-form-field {
   margin-top: 1em;
-  width: 100%;
+  max-width:450px;
+  min-width: 100%;
 }
+
+@media screen and (max-width: 600px) {
+ 
+  mat-form-field {
+    margin-top: 1em;
+    min-width: 100%;
+  }
+}
+
+/* Media query para pantallas medianas (md) */
+@media screen and (min-width: 601px) {
+  mat-form-field {
+    margin-top: 1em;
+    width:770px;
+  }
+}
+
 
 button {
   width: 100%;
