@@ -9,6 +9,7 @@ import { DistritoService } from 'src/app/services/distrito.service';
 import { PobladoService } from 'src/app/services/poblado.service';
 import { PreguntasService } from 'src/app/services/preguntas.service';
 import { ProvinciaService } from 'src/app/services/provincia.service';
+import { RespuestaService } from 'src/app/services/respuesta.service';
 
 @Component({
   selector: 'app-listado-encuesta',
@@ -19,52 +20,45 @@ export class ListadoEncuestaComponent implements OnInit {
   provincias: Iprovincia[] = []
   distritos: Idistrito[] = []
   poblados: Ipoblado[] = []
-  preguntas: Preguntas[] = []
-  respuestas: Irespuestas[] = []
+  respuestas?: Irespuestas
 
   provinciaServices = inject(ProvinciaService)
-  preguntasServices = inject(PreguntasService)
   distritoServices=inject(DistritoService)
   pobladoServices=inject(PobladoService)
+  respuestaServices=inject(RespuestaService)
+
   fb = inject(FormBuilder)
   form = this.fb.group({
-    1: ['', Validators.required],
-    2: ['', Validators.required],
-    3: ['', Validators.required],
-    4: [''],
-    5: [''],
-    6: [''],
-    7: [''],
-    8: [''],
-    9: [''],
-    10: [''],
-    11: [''],
-    12: [''],
-    13: [''],
-    14: [''],
-    15: ['']
+    respprov: ['', Validators.required],
+    resdistrito: ['', Validators.required],
+    respccpp: ['', Validators.required],
+    respiiee: [''],
+    resinternet: [''],
+    ressproveedor: [''],
+    resvelocidad: [''],
+    respermite: [''],
+    resproblem: [''],
+    resresponsable: [''],
+    rescosto: [''],
+    resnomape: [''],    
+    ressexo: [''],
+    resnumcelular: [''],
+    rescorreo: ['']
   })
   ngOnInit(): void {
-    this.preguntasServices.findall().subscribe(data => this.preguntas = data)
+  
     this.provinciaServices.findall().subscribe(data => this.provincias = data)
     this.form.valueChanges.subscribe(valores => {
-      valores['1'] ? this.buscarDistrito(valores['1']) : null,
-      valores['2'] ? this.buscarPoblado(valores['2']) : null
+      valores.respprov ? this.buscarDistrito(valores.respprov) : null,
+      valores.resdistrito ? this.buscarPoblado(valores.resdistrito) : null
     }
     )
   }
-  onSubmit(data: any) {
-    this.respuestas = []
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        const value = data[key];
-        this.respuestas.push({
-          respuesta: value,
-          preguntasid: key
-        })
-      }
-    }
-    console.log(this.respuestas)
+  onSubmit() {      
+    this.respuestas=this.form.value
+    console.log(this.form.value)
+    this.respuestaServices.create(this.respuestas).subscribe(data=>console.log(data))
+  
   }
 
 
@@ -79,7 +73,7 @@ export class ListadoEncuestaComponent implements OnInit {
 
   buscarPoblado(coddistrito: any) {
     if (coddistrito) {
-      this.pobladoServices.findByUbigeo(coddistrito).subscribe(data => {
+      this.pobladoServices.findByUbigeoName(coddistrito).subscribe(data => {
         this.poblados = data
       })
     }
@@ -87,8 +81,8 @@ export class ListadoEncuestaComponent implements OnInit {
 
   limpiar() {
     this.form.patchValue({
-      2:'',
-      3:''
+      resdistrito:'',
+      respccpp:''
     })
 
   }
