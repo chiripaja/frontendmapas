@@ -27,7 +27,6 @@ export class EditarUsuarioComponent implements OnInit{
   }
 
   guardarCambios(usuario:IUsuario){
-    console.log(usuario)
     this.activatedRoute.params.subscribe(params=>{  
       this.usuarioServices.update(params['id'],usuario).subscribe(data=>{
         Swal.fire({

@@ -11,6 +11,9 @@ import { authenticateGuard } from './guards/authenticate.guard';
 import { logeatedGuard } from './guards/logeated.guard';
 import { ListadoEncuestaComponent } from './encuesta/listado-encuesta/listado-encuesta.component';
 import { ReporteEncuestaComponent } from './encuesta/reporte-encuesta/reporte-encuesta.component';
+import { ListadoProyectoComponent } from './proyectos/listado-proyecto/listado-proyecto.component';
+import { CrearProyectoComponent } from './proyectos/crear-proyecto/crear-proyecto.component';
+import { ProyectoDetalleCrearComponent } from './proyectos/proyecto-detalle-crear/proyecto-detalle-crear.component';
 
 
 const routes: Routes = [
@@ -26,7 +29,9 @@ const routes: Routes = [
       { path: 'Mapa', component: PobladosmapaComponent },
       { path: 'poblados', component: ListaPobladoComponent },
       { path: 'encuesta', component: ReporteEncuestaComponent },
-     
+      { path: 'proyectos', component: ListadoProyectoComponent },
+      { path: 'proyectocrear', component: CrearProyectoComponent },
+      { path: 'proyectodetalle/:id', component: ProyectoDetalleCrearComponent }
     ]
   },
   { path: 'encuesta', component: ListadoEncuestaComponent },

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,11 +17,13 @@ import { CardComponent } from './utils/card/card.component';
 import { PobladosmapaComponent } from './poblado/pobladosmapa/pobladosmapa.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { PobladoinfoComponent } from './poblado/pobladoinfo/pobladoinfo.component';
-import { PruebamapaComponent } from './poblado/pruebamapa/pruebamapa.component';
 import { ListaPobladoComponent } from './poblado/lista-poblado/lista-poblado.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ListadoEncuestaComponent } from './encuesta/listado-encuesta/listado-encuesta.component';
 import { ReporteEncuestaComponent } from './encuesta/reporte-encuesta/reporte-encuesta.component';
+import { ListadoProyectoComponent } from './proyectos/listado-proyecto/listado-proyecto.component';
+import { CrearProyectoComponent } from './proyectos/crear-proyecto/crear-proyecto.component';
+import { ProyectoDetalleCrearComponent } from './proyectos/proyecto-detalle-crear/proyecto-detalle-crear.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +38,12 @@ import { ReporteEncuestaComponent } from './encuesta/reporte-encuesta/reporte-en
     CardComponent,
     PobladosmapaComponent,
     PobladoinfoComponent,
-    PruebamapaComponent,
     ListaPobladoComponent,
-   
     ListadoEncuestaComponent,
-         ReporteEncuestaComponent
-       
+    ReporteEncuestaComponent,
+    ListadoProyectoComponent,
+    CrearProyectoComponent,
+    ProyectoDetalleCrearComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +55,9 @@ import { ReporteEncuestaComponent } from './encuesta/reporte-encuesta/reporte-en
     LeafletModule
   ],
   providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:AuthInterceptor,
-    multi:true
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
   }],
   bootstrap: [AppComponent]
 })

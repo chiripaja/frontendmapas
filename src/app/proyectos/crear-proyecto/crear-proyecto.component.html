@@ -1,0 +1,53 @@
+<app-card titulo="Crear Proyecto">
+  <form [formGroup]="form" (ngSubmit)="GuardarCambios()">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre del Proyecto</mat-label>
+        <input matInput placeholder="Ingrese Nombre del proyecto" formControlName="nomproyec">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripcion del Proyecto</mat-label>
+        <input matInput placeholder="Ingrese descripcion del proyecto" formControlName="descripcionproyec">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Responsable de proyecto</mat-label>
+        <input matInput placeholder="Ingrese Responsable del proyecto" formControlName="responsable">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Fecha Inicio</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaini">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </p>
+   
+    <p>
+      <mat-form-field>
+        <mat-label>Fecha fin</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="fechafin">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2" ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </p>
+  
+    <p>
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="estado">
+          <mat-option value="INICIO">Inicio</mat-option>
+          <mat-option value="PROCESO">Proceso</mat-option>
+          <mat-option value="COMPLETADO">Completado</mat-option>
+        </mat-select>      
+      </mat-form-field>
+    </p>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" class="mb-3">Guardar Cambios</button>
+  </form>
+</app-card>

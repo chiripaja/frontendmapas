@@ -1,0 +1,40 @@
+<app-card titulo="Proyectos centros poblado">
+    <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>        
+            <mat-form-field class="item">
+              <mat-label>Provincia</mat-label>
+              <mat-select formControlName="respprov" (ngModelChange)="limpiar()">
+                <mat-option *ngFor="let provincia of provincias"
+                  [value]="provincia.codigo">{{provincia.provincia}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.get('respprov')?.hasError('required') && form.get('respprov')?.touched">
+                Este Campo es requerido.
+              </mat-error>
+            </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="item">
+            <mat-label>Distrito</mat-label>
+            <mat-select formControlName="resdistrito">
+              <mat-option *ngFor="let distrito of distritos"
+                [value]="distrito.codigo">{{distrito.distrito}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('resdistrito')?.hasError('required') && form.get('resdistrito')?.touched">
+              Este Campo es requerido.
+            </mat-error>
+          </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="item">
+        <mat-label>Centro Poblado</mat-label>
+        <mat-select formControlName="respccpp">
+          <mat-option *ngFor="let poblado of poblados"
+            [value]="poblado.id">{{poblado.centro_poblado}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p>
+      <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar</button>       
+    </p>
+</form>
+</app-card>

@@ -69,9 +69,7 @@ export class ListadoEncuestaComponent implements OnInit {
   }
   
   onSubmit() {      
-
     this.respuestas=this.form.value
-    console.log(this.form.value)
     this.respuestaServices.create(this.respuestas).subscribe(data=>{
       this.form.reset();
       Swal.fire({
@@ -91,7 +89,6 @@ export class ListadoEncuestaComponent implements OnInit {
         this.distritos = data
       })
     }
-
   }
 
   buscarPoblado(coddistrito: any) {
