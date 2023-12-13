@@ -22,21 +22,34 @@
       <td mat-cell *matCellDef="let data">{{ data.password }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="rol">
-      <th mat-sort-header mat-header-cell *matHeaderCellDef>rol</th>
-      <td mat-cell *matCellDef="let data">{{ data.rol }}</td>
+    <ng-container matColumnDef="nombre">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>nombre</th>
+      <td mat-cell *matCellDef="let data">{{ data.nombre }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="acciones">
-      <th mat-sort-header mat-header-cell *matHeaderCellDef>Acciones</th>
+
+    <ng-container matColumnDef="editar">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>Editar</th>
       <td mat-cell *matCellDef="let data">
        
         <a
           routerLink="../editar/{{data.id}}"
           mat-flat-button
-          color="warn"
+          color="primary"
           >editar</a
         >
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="eliminar">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <td mat-cell *matCellDef="let data">
+       
+     
+
+        <button mat-flat-button (click)="eliminar(data.id)" color="warn">Eliminar</button>
+
       </td>
     </ng-container>
 

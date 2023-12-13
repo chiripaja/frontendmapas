@@ -26,6 +26,10 @@ export class UsuarioService {
     return this.http.post(this.apiURL,usuario)
   }
 
+  public delete(id:number){
+    return this.http.delete(`${this.apiURL}/${id}`)
+  }
+
   createHeaders(){
     return {
       headers:new HttpHeaders({

@@ -16,6 +16,9 @@
                 <mat-option *ngFor="let provincia of provincias"
                   [value]="provincia.codigo">{{provincia.provincia}}</mat-option>
               </mat-select>
+              <mat-error *ngIf="form.get('respprov')?.hasError('required') && form.get('respprov')?.touched">
+                Este Campo es requerido.
+              </mat-error>
             </mat-form-field>
           </li>
           <li>
@@ -26,6 +29,9 @@
                 <mat-option *ngFor="let distrito of distritos"
                   [value]="distrito.codigo">{{distrito.distrito}}</mat-option>
               </mat-select>
+              <mat-error *ngIf="form.get('resdistrito')?.hasError('required') && form.get('resdistrito')?.touched">
+                Este Campo es requerido.
+              </mat-error>
             </mat-form-field>
           </li>
           <li>
@@ -137,6 +143,9 @@
               <mat-form-field appearance="outline">
                 <mat-label>Nombres Completos</mat-label>
                 <input matInput placeholder="Escribir los nombres y apellidos." formControlName="resnomape">
+                <mat-error *ngIf="form.get('resnomape')?.hasError('required') && form.get('resnomape')?.touched">
+                  Este Campo es requerido.
+                </mat-error>
               </mat-form-field>
             </li>
 
@@ -154,6 +163,9 @@
               <mat-form-field appearance="outline">
                 <mat-label>(+51)</mat-label>
                 <input matInput placeholder="Numero de celular (999888777)." formControlName="resnumcelular">
+                <mat-error *ngIf="form.get('resnumcelular')?.hasError('required') && form.get('resnumcelular')?.touched">
+                  Este Campo es requerido.
+                </mat-error>
               </mat-form-field>
             </li>
 
@@ -162,8 +174,14 @@
               <mat-form-field appearance="outline">
                 <mat-label>Ingresar</mat-label>
                 <input matInput placeholder="Registrar correo electronico." formControlName="rescorreo">
+                <mat-error *ngIf="form.get('rescorreo')?.hasError('required') && form.get('rescorreo')?.touched">
+                  Este Campo es requerido.
+                </mat-error>
+                <mat-error *ngIf="form.get('rescorreo')?.hasError('email') && form.get('rescorreo')?.touched">
+                  Ingrese una dirección de correo electrónico válida.
+                </mat-error>
               </mat-form-field>
-            
+              
               
             </li>
         </ol>

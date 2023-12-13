@@ -11,7 +11,7 @@ import { DistritoService } from 'src/app/services/distrito.service';
 import { PobladoService } from 'src/app/services/poblado.service';
 import { ProvinciaService } from 'src/app/services/provincia.service';
 import { RespuestaService } from 'src/app/services/respuesta.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-listado-encuesta',
   templateUrl: './listado-encuesta.component.html',
@@ -38,8 +38,8 @@ export class ListadoEncuestaComponent implements OnInit {
   form = this.fb.group({
     respprov: ['', Validators.required],
     resdistrito: ['', Validators.required],
-    respccpp: ['', Validators.required],
-    respiiee: [''],
+    respccpp: [''],
+    respiiee: ['', Validators.required],
     resinternet: [''],
     ressproveedor: [''],
     respproveedorotro: [''],
@@ -69,9 +69,19 @@ export class ListadoEncuestaComponent implements OnInit {
   }
   
   onSubmit() {      
+
     this.respuestas=this.form.value
     console.log(this.form.value)
-    this.respuestaServices.create(this.respuestas).subscribe(data=>console.log(data))  
+    this.respuestaServices.create(this.respuestas).subscribe(data=>{
+      this.form.reset();
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Completado Correctamente.',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })  
   }
 
 
@@ -111,7 +121,8 @@ export class ListadoEncuestaComponent implements OnInit {
       respccpp:'',
       respiiee:''
     })
-
   }
+
+
   
 }

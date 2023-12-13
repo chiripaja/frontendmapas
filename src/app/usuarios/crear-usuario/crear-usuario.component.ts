@@ -12,14 +12,16 @@ import Swal from 'sweetalert2'
 export class CrearUsuarioComponent {
   @ViewChild('formularioHijo') formularioHijo?: FormularioUsuarioComponent;
   constructor(private router:Router,private usuarioServices:UsuarioService) {
-
     
   }
 
 
   guardarCambios(usuario:IUsuario){    
-    this.usuarioServices.create(usuario).subscribe(data=>
-      {this.formularioHijo?.resetFormulario();
+ 
+   this.usuarioServices.create(usuario).subscribe(data=>
+      {
+        console.log(data)
+        this.formularioHijo?.resetFormulario();
         Swal.fire({
           position: 'top-end',
           icon: 'success',
