@@ -10,6 +10,7 @@ import { ListaPobladoComponent } from './poblado/lista-poblado/lista-poblado.com
 import { authenticateGuard } from './guards/authenticate.guard';
 import { logeatedGuard } from './guards/logeated.guard';
 import { ListadoEncuestaComponent } from './encuesta/listado-encuesta/listado-encuesta.component';
+import { ReporteEncuestaComponent } from './encuesta/reporte-encuesta/reporte-encuesta.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'editar/:id', component: EditarUsuarioComponent },
       { path: 'Mapa', component: PobladosmapaComponent },
       { path: 'poblados', component: ListaPobladoComponent },
+      { path: 'encuesta', component: ReporteEncuestaComponent },
      
     ]
   },

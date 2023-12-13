@@ -1,0 +1,115 @@
+<app-card titulo="Lista Respuesta Encuesta">
+
+    <div *ngIf="loading">
+      <!-- Barra de progreso visible mientras se cargan los datos -->
+      <mat-progress-bar mode="indeterminate" style="margin-bottom: 25px;"></mat-progress-bar>
+    </div>
+
+  
+    <button mat-raised-button  (click)="exportToExcel()">
+      <mat-icon>table_chart</mat-icon>
+      Exportar a Excel
+    </button>
+    <mat-form-field *ngIf="!loading" class="example-full-width" appearance="outline">
+        <mat-label>Ingresa tu busqueda</mat-label>
+        <mat-icon matPrefix  class="search-icon">search</mat-icon>
+        <input matInput (keyup)="Filter($event)">    
+    </mat-form-field>
+    <table     
+   style="margin-bottom: 4px;"
+    mat-table 
+    matSort
+    [dataSource]="datasource" 
+    >
+   
+      
+  
+       <ng-container matColumnDef="provincia">
+         <th mat-sort-header mat-header-cell *matHeaderCellDef>provincia</th>
+         <td mat-cell *matCellDef="let element"> {{element.provincia}} </td>
+       </ng-container>
+     
+   
+       <ng-container matColumnDef="distrito">
+         <th mat-sort-header mat-header-cell *matHeaderCellDef>distrito</th>
+         <td mat-cell *matCellDef="let element"> {{element.distrito}} </td>
+       </ng-container>
+     
+       <ng-container matColumnDef="NombreIE">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>NombreIE</th>
+        <td mat-cell *matCellDef="let element"> {{element.NombreIE}} </td>
+      </ng-container>
+
+
+
+
+      <ng-container matColumnDef="NivelModalidad">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>NivelModalidad</th>
+        <td mat-cell *matCellDef="let element"> {{element.NivelModalidad}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="resinternet">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>resinternet</th>
+        <td mat-cell *matCellDef="let element"> {{element.resinternet}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="ressproveedor">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>ressproveedor</th>
+        <td mat-cell *matCellDef="let element"> {{element.ressproveedor}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="respproveedorotro">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>respproveedorotro</th>
+        <td mat-cell *matCellDef="let element"> {{element.respproveedorotro}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="resvelocidad">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>resvelocidad</th>
+        <td mat-cell *matCellDef="let element"> {{element.resvelocidad}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="respermite">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>respermite</th>
+        <td mat-cell *matCellDef="let element"> {{element.respermite}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="resproblem">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>resproblem</th>
+        <td mat-cell *matCellDef="let element"> {{element.resproblem}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="resproblemotro">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>resproblemotro</th>
+        <td mat-cell *matCellDef="let element"> {{element.resproblemotro}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="resresponsable">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>resresponsable</th>
+        <td mat-cell *matCellDef="let element"> {{element.resresponsable}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rescosto">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>rescosto</th>
+        <td mat-cell *matCellDef="let element"> {{element.rescosto}} </td>
+      </ng-container>
+
+       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+     </table>
+    
+  
+      <ng-container footer>
+        <mat-paginator 
+        [pageSizeOptions]="[10,20,50]"
+        [showFirstLastButtons]="true"
+        >  
+        </mat-paginator>
+      </ng-container>
+      
+  </app-card>
+  

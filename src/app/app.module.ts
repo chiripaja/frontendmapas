@@ -21,6 +21,8 @@ import { PruebamapaComponent } from './poblado/pruebamapa/pruebamapa.component';
 import { ListaPobladoComponent } from './poblado/lista-poblado/lista-poblado.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ListadoEncuestaComponent } from './encuesta/listado-encuesta/listado-encuesta.component';
+import { ReporteEncuestaComponent } from './encuesta/reporte-encuesta/reporte-encuesta.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { ListadoEncuestaComponent } from './encuesta/listado-encuesta/listado-en
     PruebamapaComponent,
     ListaPobladoComponent,
    
-    ListadoEncuestaComponent
+    ListadoEncuestaComponent,
+         ReporteEncuestaComponent
+       
   ],
   imports: [
     BrowserModule,

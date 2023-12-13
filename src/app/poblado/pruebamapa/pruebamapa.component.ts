@@ -12,8 +12,6 @@ export class PruebamapaComponent implements OnInit{
   
   onMapReady(map: L.Map) {
     this.map = map;
-
-    // Ahora puedes acceder a this.map y realizar operaciones en el mapa
   }
 
   map?: L.Map;
@@ -46,12 +44,10 @@ export class PruebamapaComponent implements OnInit{
       console.log(event)
     }
    
-    // Handle click event if needed
   }
 
   fitBounds(bounds: L.LatLngBounds) {
    
-    //this.options.fitBounds = bounds;
     
   }
 }

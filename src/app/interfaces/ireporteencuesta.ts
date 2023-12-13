@@ -1,0 +1,20 @@
+export interface Ireporteencuesta {
+    id?:string| null,
+    provincia?:string| null,
+    distrito?:string| null,
+    NombreIE?:string| null,
+    NivelModalidad?:string| null,
+    resinternet?:string| null,
+    ressproveedor?:string| null,
+    respproveedorotro?:string| null,
+    resvelocidad?:string| null,
+    respermite?:string| null,
+    resproblem?:string|null,
+    resproblemotro?:string| null,    
+    resresponsable?:string| null,
+    rescosto?:string| null,
+    resnomape?:string| null,
+    ressexo?:string| null,
+    resnumcelular?:string| null,
+    rescorreo?:string| null
+}

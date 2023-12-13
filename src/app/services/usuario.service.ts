@@ -13,8 +13,7 @@ export class UsuarioService {
 
   private apiURL=environment.apiURL+'user';
 
-  public findAll(): Observable<IUsuario[]>{
-    
+  public findAll(): Observable<IUsuario[]>{    
     return this.http.get<IUsuario[]>(this.apiURL);
   }
 
@@ -28,6 +27,10 @@ export class UsuarioService {
 
   public delete(id:number){
     return this.http.delete(`${this.apiURL}/${id}`)
+  }
+
+  public update(id:number,usuario:IUsuario){
+    return this.http.put(`${this.apiURL}/${id}`,usuario)
   }
 
   createHeaders(){

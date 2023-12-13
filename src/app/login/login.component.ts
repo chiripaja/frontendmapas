@@ -33,7 +33,6 @@ export class LoginComponent {
     this.authservices.login(credenciales).subscribe(data => {
 
       this.authservices.guardarToken(data)
-      //this.authservices.guardarToken(data);
       this.router.navigate(['/admin/Mapa'])
     },
       (error) => {
