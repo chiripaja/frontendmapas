@@ -38,9 +38,7 @@ export class EditarUsuarioComponent implements OnInit{
         }).then((data)=>{
           this.router.navigate(['/admin/usuario'])
         })
-      })      
-      
-     
+      })  
     })
  
   }
