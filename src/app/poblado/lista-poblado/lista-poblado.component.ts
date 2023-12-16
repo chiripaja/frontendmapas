@@ -14,7 +14,7 @@ import * as XLSX from 'xlsx';
 export class ListaPobladoComponent implements AfterViewInit{
   poblados: Ipoblado[]=[]
   datasource:any;
-  displayedColumns: string[] = ['ubigeo', 'ubigeo_ccpp', 'centro_poblado','electricidad'];
+  displayedColumns: string[] = ['distrito', 'centro_poblado', 'categoria','electricidad'];
   loading: boolean = true;
   selectedElectricidadOption: string = '';
   pobladoOriginal:Ipoblado[]=[]

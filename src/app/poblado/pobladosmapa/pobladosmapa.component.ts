@@ -64,8 +64,6 @@ export class PobladosmapaComponent implements OnInit {
     center: latLng(-9.934620137364014, -76.25057908706368),
 
 
-
-
   };
 
   layersControl = {
