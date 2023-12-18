@@ -1,74 +1,95 @@
 <app-card titulo="Proyectos centros poblado">
-    <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <p>        
-            <mat-form-field class="item">
-              <mat-label>Provincia</mat-label>
-              <mat-select formControlName="respprov" (ngModelChange)="limpiar()">
-                <mat-option *ngFor="let provincia of provincias"
-                  [value]="provincia.codigo">{{provincia.provincia}}</mat-option>
-              </mat-select>
-              <mat-error *ngIf="form.get('respprov')?.hasError('required') && form.get('respprov')?.touched">
-                Este Campo es requerido.
-              </mat-error>
-            </mat-form-field>
-    </p>
-    <p>
+
+  <div class="container">
+    <div>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{proyecto.nomproyec}}</mat-card-title>
+          <mat-card-subtitle>Responsable : {{proyecto.responsable}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content style="text-align: justify;">
+          <p>{{proyecto.descripcionproyec}}</p>
+        </mat-card-content>
+        <mat-card-content style="text-align: justify;">
+          <p>Fecha Inicio:{{proyecto.fechaini}}</p>
+          <p>Fecha Fin:{{proyecto.fechafin}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="container_flex">
+      <div>
         <mat-form-field class="item">
-            <mat-label>Distrito</mat-label>
-            <mat-select formControlName="resdistrito">
-              <mat-option *ngFor="let distrito of distritos"
-                [value]="distrito.codigo">{{distrito.distrito}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="form.get('resdistrito')?.hasError('required') && form.get('resdistrito')?.touched">
-              Este Campo es requerido.
-            </mat-error>
-          </mat-form-field>
-    </p>
+          <mat-label>Provincia</mat-label>
+          <mat-select formControlName="respprov" (ngModelChange)="limpiar()">
+            <mat-option *ngFor="let provincia of provincias"
+              [value]="provincia.codigo">{{provincia.provincia}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('respprov')?.hasError('required') && form.get('respprov')?.touched">
+            Este Campo es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="item">
+          <mat-label>Distrito</mat-label>
+          <mat-select formControlName="resdistrito">
+            <mat-option *ngFor="let distrito of distritos" [value]="distrito.codigo">{{distrito.distrito}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('resdistrito')?.hasError('required') && form.get('resdistrito')?.touched">
+            Este Campo es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="item">
+          <mat-label>Centro Poblado</mat-label>
+          <mat-select formControlName="respccpp">
+            <mat-option *ngFor="let poblado of poblados" [value]="poblado.id">{{poblado.centro_poblado}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+
     <p>
-      <mat-form-field class="item">
-        <mat-label>Centro Poblado</mat-label>
-        <mat-select formControlName="respccpp">
-          <mat-option *ngFor="let poblado of poblados"
-            [value]="poblado.id">{{poblado.centro_poblado}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar</button>
     </p>
-    <p>
-      <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar</button>       
-    </p>
-</form>
+  </form>
 
-<table mat-table matSort [dataSource]="datasource" #tabla1>
-  <ng-container matColumnDef="id">
-    <th mat-sort-header mat-header-cell *matHeaderCellDef>id</th>
-    <td mat-cell *matCellDef="let data">{{ data.id }}</td>
+  <table mat-table matSort [dataSource]="datasource" #tabla1>
+    <ng-container matColumnDef="id">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>id</th>
+      <td mat-cell *matCellDef="let data">{{ data.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nomproyec">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>nomproyec</th>
+      <td mat-cell *matCellDef="let data">{{ data.nomproyec }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="centro_poblado">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>centro_poblado</th>
+      <td mat-cell *matCellDef="let data">{{ data.centro_poblado }}</td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="eliminar">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <td mat-cell *matCellDef="let data">
+        <button mat-flat-button (click)="eliminar(data.id)" color="warn">Eliminar</button>
+      </td>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="ColumnasMostrar"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ColumnasMostrar"></mat-row>
+  </table>
+  <ng-container footer>
+    <mat-paginator [pageSizeOptions]="[5,10,20]" [showFirstLastButtons]="true">
+
+    </mat-paginator>
   </ng-container>
-
-  <ng-container matColumnDef="nomproyec">
-    <th mat-sort-header mat-header-cell *matHeaderCellDef>nomproyec</th>
-    <td mat-cell *matCellDef="let data">{{ data.nomproyec }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="centro_poblado">
-    <th mat-sort-header mat-header-cell *matHeaderCellDef>centro_poblado</th>
-    <td mat-cell *matCellDef="let data">{{ data.centro_poblado }}</td>
-  </ng-container>
-
-
-
-  <ng-container matColumnDef="eliminar">
-    <th mat-sort-header mat-header-cell *matHeaderCellDef>Eliminar</th>
-    <td mat-cell *matCellDef="let data">
-      <button mat-flat-button (click)="eliminar(data.id)" color="warn">Eliminar</button>
-    </td>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="ColumnasMostrar"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ColumnasMostrar"></mat-row>
-</table>
-<ng-container footer>
-  <mat-paginator [pageSizeOptions]="[5,10,20]" [showFirstLastButtons]="true">
-
-  </mat-paginator>
-</ng-container>
 </app-card>

@@ -24,6 +24,10 @@ export class ProyectoService {
   public delete(id:number){
     return this.http.delete(`${this.apiURL}/${id}`)
   }
+  
+  public findByID(id:number):Observable<Iproyecto>{
+    return this.http.get<Iproyecto>(`${this.apiURL}/${id}`);
+  }
 
 
 }

@@ -1,0 +1,17 @@
+export interface Imoviles {
+    id?:number| null,
+    EMPRESA_OPERADORA?:string| null,
+    UBIGEO_CCPP:string|null,
+    UBIGEO_DISTRITO?:string| null,
+    DEPARTAMENTO?:string| null,
+    PROVINCIA?:string| null,
+    DISTRITO?:string| null,
+    CENTRO_POBLADO?:string| null,
+    ES2G?:string| null,
+    ES3G?:string| null,
+    ES4G?:string| null,
+    ES5G?:string| null,
+    VOZ?:string| null,
+    SMS?:string| null,
+    MMS?:string| null,
+}

@@ -9,6 +9,8 @@ import Swal from 'sweetalert2'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+
 export class LoginComponent {
   hide = true;
   authservices = inject(AuthService)
@@ -22,7 +24,6 @@ export class LoginComponent {
 
   obtenerErrorCampoNombre(camponom: string) {
     var campo = this.form.get(camponom)
-
     if (campo?.hasError('required')) {
       return 'El campo es requerido';
     }

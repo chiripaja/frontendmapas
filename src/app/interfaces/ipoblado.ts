@@ -1,6 +1,7 @@
 export interface Ipoblado {
     id?:number| null,
     ubigeo?:string| null,
+    acceso_internet:string|null,
     ccpp?:string| null,
     centro_poblado?:string| null,
     categoria?:string| null,

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ipoblado } from '../interfaces/ipoblado';
+import { Ipobladoreporte } from '../interfaces/ipobladoreporte';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,8 @@ export class PobladoService {
   }
   public findByUbigeoName(id:any):Observable<Ipoblado[]>{
     return this.http.get<Ipoblado[]>(`${this.apiURL}/findByUbigeoName/${id}`);
+  }
+  public findAllReporte():Observable<Ipobladoreporte[]>{
+    return this.http.get<Ipobladoreporte[]>(`${this.apiURL}/reporte/data`)
   }
 }

@@ -27,6 +27,9 @@ export class CrearProyectoComponent {
     if (this.form.value.fechaini && this.form.value.fechafin) {
       const fechaini = new Date(this.form.value.fechaini);
       const fechafin = new Date(this.form.value.fechafin);
+      console.log("fehca inicio :"+fechaini)
+      
+      
       this.proyecto = {
         nomproyec: this.form.value.nomproyec,
         fechaini: new Date(fechaini),
@@ -35,6 +38,8 @@ export class CrearProyectoComponent {
         responsable: this.form.value.responsable,
         estado: this.form.value.estado,
       };
+      console.log(this.proyecto)
+     
       this.proyectoServices.create(this.proyecto).subscribe(data=>{
         Swal.fire({
           position: 'top-end',
@@ -45,8 +50,7 @@ export class CrearProyectoComponent {
         }).then((data)=>{
           this.router.navigate(['/admin/proyectos'])
         })
-
-      })
+      })   
     }
   }
 }

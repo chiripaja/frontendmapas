@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Ipoblado } from 'src/app/interfaces/ipoblado';
+import { Ipobladoreporte } from 'src/app/interfaces/ipobladoreporte';
 import { PobladoService } from 'src/app/services/poblado.service';
 import * as XLSX from 'xlsx';
 
@@ -12,21 +13,21 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./lista-poblado.component.css']
 })
 export class ListaPobladoComponent implements AfterViewInit{
-  poblados: Ipoblado[]=[]
+  poblados: Ipobladoreporte[]=[]
   datasource:any;
-  displayedColumns: string[] = ['distrito', 'centro_poblado', 'categoria','electricidad'];
+  displayedColumns: string[] = ['distrito', 'centro_poblado', 'categoria','acceso_internet','electricidad'];
   loading: boolean = true;
   selectedElectricidadOption: string = '';
-  pobladoOriginal:Ipoblado[]=[]
+  pobladoOriginal:Ipobladoreporte[]=[]
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!:MatSort;
   constructor(private pobladoServices:PobladoService) {        
   }
   ngAfterViewInit(): void {
-    this.pobladoServices.findAll().subscribe(data=>{
+    this.pobladoServices.findAllReporte().subscribe(data=>{
       this.poblados=data;
       this.pobladoOriginal=data;
-      this.datasource=new MatTableDataSource<Ipoblado>(this.poblados);
+      this.datasource=new MatTableDataSource<Ipobladoreporte>(this.poblados);
       this.datasource.paginator=this.paginator;
       this.datasource.sort=this.sort;
       this.loading = false;
@@ -75,6 +76,16 @@ export class ListaPobladoComponent implements AfterViewInit{
       this.datasource.data = datosFiltrados;
       this.datasource.paginator?.firstPage();
     }
- 
-  }
+   }
+
+   applyFilterInternet(){
+    if(this.selectedElectricidadOption==='s'){
+      this.datasource.data=this.pobladoOriginal
+    }
+    else{
+      const datosFiltrados = this.poblados.filter(poblado => poblado.acceso_internet === this.selectedElectricidadOption);
+      this.datasource.data = datosFiltrados;
+      this.datasource.paginator?.firstPage();
+    }
+   }
 }

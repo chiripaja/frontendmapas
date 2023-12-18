@@ -20,7 +20,6 @@ export class CrearUsuarioComponent {
  
    this.usuarioServices.create(usuario).subscribe(data=>
       {
-        console.log(data)
         this.formularioHijo?.resetFormulario();
         Swal.fire({
           position: 'top-end',
@@ -30,7 +29,6 @@ export class CrearUsuarioComponent {
           timer: 1500
         })}
       ,error=>{
-        console.log(error)
         Swal.fire({
           text: error.error.msj,
           icon: 'error'

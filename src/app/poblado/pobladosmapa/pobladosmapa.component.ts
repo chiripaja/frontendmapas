@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Icon, circle, icon, latLng, marker, polygon, tileLayer, Marker, Circle, latLngBounds } from 'leaflet';
+import {  circle, icon, latLng, marker, polygon, tileLayer, Marker, Circle, latLngBounds } from 'leaflet';
 import * as L from 'leaflet';
 import { Idistrito } from 'src/app/interfaces/idistrito';
 import { Ipoblado } from 'src/app/interfaces/ipoblado';
@@ -99,7 +99,7 @@ export class PobladosmapaComponent implements OnInit {
 
   buscarPoblado(coddistrito: any) {
   if (coddistrito) {      
-      const dato: Idistrito | undefined = this.distritos.find(distrito => distrito.codigo === coddistrito); 
+      const dato: Idistrito | undefined = this.distritos.find(distrito => distrito.codigo === coddistrito);    
       dato ? this.ubicarMapa(dato?.latitud1, dato?.longitud1, dato?.latitud2, dato?.longitud2,11) : ''
       this.pobladoServices.findByUbigeo(coddistrito).subscribe(data => {
         this.poblados = data
@@ -107,6 +107,7 @@ export class PobladosmapaComponent implements OnInit {
       )
     }
   }
+  
   buscarMapaData(idpoblado: any) {
     const dato: Ipoblado | undefined =this.DatosCentrosPoblados = this.poblados.find(poblado => poblado.id === idpoblado)    
     dato ? this.ubicarMapa(dato?.latitud,dato.longitud, dato.latitud,dato.longitud,14) : ''
@@ -134,7 +135,6 @@ export class PobladosmapaComponent implements OnInit {
 
 
   ubicarMapa(latitud1: any, longitud1: any, latitud2: any, longitud2: any,zoom:number=10) {
-    console.log(latitud1, longitud1, latitud2, longitud2)
     if (latitud1 && longitud1 && latitud2 && longitud2 && this.map) {
       var bounds = new L.LatLngBounds(
         [parseFloat(latitud1), parseFloat(longitud1)],
@@ -153,12 +153,11 @@ export class PobladosmapaComponent implements OnInit {
     this.poblados = []
   }
   guardarCambios(data: any) {
-    console.log(data)
+    
   }
 
   manejarclick($event: L.LeafletMouseEvent) {
     const latitud = $event.latlng.lat;
     const long = $event.latlng.lng;
-    console.log({ latitud, long })
   }
 }

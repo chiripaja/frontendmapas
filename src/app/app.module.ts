@@ -24,6 +24,7 @@ import { ReporteEncuestaComponent } from './encuesta/reporte-encuesta/reporte-en
 import { ListadoProyectoComponent } from './proyectos/listado-proyecto/listado-proyecto.component';
 import { CrearProyectoComponent } from './proyectos/crear-proyecto/crear-proyecto.component';
 import { ProyectoDetalleCrearComponent } from './proyectos/proyecto-detalle-crear/proyecto-detalle-crear.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ProyectoDetalleCrearComponent } from './proyectos/proyecto-detalle-crea
     ReporteEncuestaComponent,
     ListadoProyectoComponent,
     CrearProyectoComponent,
-    ProyectoDetalleCrearComponent
+    ProyectoDetalleCrearComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

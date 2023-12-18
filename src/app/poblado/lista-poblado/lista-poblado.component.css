@@ -6,3 +6,9 @@
   .botonExportar{
     margin-left: 1em;
   }
+
+  .container{
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: space-between;
+  }

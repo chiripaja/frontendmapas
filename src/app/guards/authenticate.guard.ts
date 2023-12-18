@@ -10,12 +10,7 @@ export const authenticateGuard: CanActivateFn = (route, state) => {
     const authServices=inject(AuthService)
     const token=localStorage.getItem('token')!
     const dataToken=JSON.parse(atob(token.split('.')[1]))
-    console.log(token)
-    console.log(dataToken)
-    console.log(dataToken.exp)
     const fechaexpiracion = new Date(dataToken.exp*1000);
-    console.log(fechaexpiracion);
-    console.log(new Date())
     if(new Date()>=fechaexpiracion){
       authServices.logout()
       return false;

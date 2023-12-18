@@ -5,8 +5,7 @@ body {
   }
   
   .distrito-info {
-    max-width: 800px;
-    
+    max-width: 800px;    
     padding: 20px;
     background-color: #f4f4f4;
     border-radius: 8px;
@@ -45,3 +44,11 @@ body {
     color: #555;
   }
   
+  .tbt-operador{
+    width: 100%;
+  }
+
+  .tbt-operador thead td{
+    font-weight: bolder;
+    
+  }

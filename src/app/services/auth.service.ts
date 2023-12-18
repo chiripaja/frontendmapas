@@ -25,9 +25,6 @@ export class AuthService {
    
     let expiracionfecha = new Date(expiracion*1000)
 
-    console.log(localStorage.getItem(this.llavetoken))
-    console.log(expiracionfecha)
-    console.log(new Date())
     if(expiracionfecha<=new Date()){
       this.logout();
       return of(false);

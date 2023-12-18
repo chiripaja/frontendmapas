@@ -8,11 +8,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { Idistrito } from 'src/app/interfaces/idistrito';
 import { Ipoblado } from 'src/app/interfaces/ipoblado';
 import { Iprovincia } from 'src/app/interfaces/iprovincia';
+import { Iproyecto } from 'src/app/interfaces/iproyecto';
 import { Iproyectodetalle } from 'src/app/interfaces/iproyectodetalle';
 import { Iproyectodetalledto } from 'src/app/interfaces/iproyectodetalledto';
 import { DistritoService } from 'src/app/services/distrito.service';
 import { PobladoService } from 'src/app/services/poblado.service';
 import { ProvinciaService } from 'src/app/services/provincia.service';
+import { ProyectoService } from 'src/app/services/proyecto.service';
 import { ProyectodetalleService } from 'src/app/services/proyectodetalle.service';
 import Swal from 'sweetalert2'
 @Component({
@@ -21,16 +23,21 @@ import Swal from 'sweetalert2'
   styleUrls: ['./proyecto-detalle-crear.component.css']
 })
 export class ProyectoDetalleCrearComponent implements OnInit {
-  router = inject(Router)
+  
   provincias: Iprovincia[] = []
   distritos: Idistrito[] = []
   poblados: Ipoblado[] = []
+  proyecto!:Iproyecto
+
+  router = inject(Router)
   provinciaServices = inject(ProvinciaService)
   distritoServices = inject(DistritoService)
   pobladoServices = inject(PobladoService)
   proyectodetalleServices = inject(ProyectodetalleService)
+  proyectoServices=inject(ProyectoService)
   fb = inject(FormBuilder)
   activatedRoute = inject(ActivatedRoute)
+
   private unsubscribe$ = new Subject<void>();
 
   proyectodetalledto: Iproyectodetalledto[] = [];
@@ -49,6 +56,7 @@ export class ProyectoDetalleCrearComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    
     this.provinciaServices.findall().subscribe(data => this.provincias = data)
     this.form.valueChanges.subscribe(valores => {
       valores.respprov ? this.buscarDistrito(valores.respprov) : null,
@@ -62,10 +70,11 @@ export class ProyectoDetalleCrearComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(params => {
         const idproyecto = params['id'];
-      
+        this.proyectoServices.findByID(idproyecto).subscribe(data=>{
+          this.proyecto=data
+        })
         this.proyectodetalleServices.findata(idproyecto)
           .subscribe(data => {
-            console.log(data)
             this.proyectodetalledto = data; 
             this.datasource = new MatTableDataSource<Iproyectodetalledto>(this.proyectodetalledto);
             this.datasource.paginator = this.paginator
@@ -89,7 +98,6 @@ export class ProyectoDetalleCrearComponent implements OnInit {
   buscarPoblado(coddistrito: any) {
     if (coddistrito) {
       this.pobladoServices.findByUbigeoName(coddistrito).subscribe(data => {
-        console.log(data)
         this.poblados = data
       })
     }

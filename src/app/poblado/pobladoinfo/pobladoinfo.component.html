@@ -11,30 +11,78 @@
           <li>Latitud:{{poblado?.latitud}}</li>
           <li>Longitud:{{poblado?.longitud}}</li>
           <li>Altitud: {{poblado?.altitud}}</li>
-          <li>Idioma: {{poblado?.idioma_lengua}}</li>
-          <li>Poblacion: {{poblado?.poblacion}}</li>
-          <li>Vivienda: {{poblado?.vivienda}}</li>
-          <li>I.E. Primaria: {{poblado?.iiee_primaria}}</li>
-          <li>I.E. Secundaria: {{poblado?.iiee_secundaria}}</li>
-          <li>Puesto de Salud: {{poblado?.puesto_salud}}</li>
-          <li>Puesto de Policial: {{poblado?.puesto_policial}}</li>
+          <li>Idioma: {{poblado?.idioma_lengua?poblado?.idioma_lengua:'-'}}</li>
+          <li>Poblacion: {{poblado?.poblacion?poblado?.poblacion:'-'}}</li>
+          <li>Vivienda: {{poblado?.vivienda?poblado?.vivienda:'-'}}</li>
+          <li>I.E. Primaria: {{poblado?.iiee_primaria?poblado?.iiee_primaria:'-'}}</li>
+          <li>I.E. Secundaria: {{poblado?.iiee_secundaria?poblado?.iiee_secundaria:'-'}}</li>
+          <li>Puesto de Salud: {{poblado?.puesto_salud?poblado?.puesto_salud:'-'}}</li>
+          <li>Puesto de Policial: {{poblado?.puesto_policial?poblado?.puesto_policial:'-'}}</li>
         </ul>
       </div>
 
       <div class="info-item">
         <h2>Servicios</h2>
         <ul>
-          <li>Agua: {{poblado?.agua}}</li>
-          <li>Electricidad:{{poblado?.electricidad}}</li>
-          <li>Desague:{{poblado?.desague}}</li>
-          <li>Alumbrado Publico:{{poblado?.alumbrado_publico}}</li>
-          <li>Telefono Publico:{{poblado?.telefono_publico}}</li>
-          <li>Hotel:{{poblado?.hostal}}</li>
-          <li>Cabina de Internet: {{poblado?.cabina_internet}}</li>
+          <li>Agua: {{poblado?.agua?poblado?.agua:'-'}}</li>
+          <li>Electricidad:{{poblado?.electricidad?poblado?.electricidad:'-'}}</li>
+          <li>Desague:{{poblado?.desague?poblado?.desague:'-'}}</li>
+          <li>Alumbrado Publico:{{poblado?.alumbrado_publico?poblado?.alumbrado_publico:'-'}}</li>
+          <li>Telefono Publico:{{poblado?.telefono_publico?poblado?.telefono_publico:'-'}}</li>
+          <li>Hotel:{{poblado?.hostal?poblado?.hostal:'-'}}</li>
+          <li>Acceso de Internet: {{poblado?.acceso_internet | lowercase}}</li>
           <li>Via: {{poblado?.via_mayor_uso?poblado?.via_mayor_uso:'-'}}</li>
           <li>Transporte: {{poblado?.transporte_mayor_uso?poblado?.transporte_mayor_uso:'-'}}</li>
-          <li>Local Comunal: {{poblado?.local_comunal}}</li>
+          <li>Local Comunal: {{poblado?.local_comunal?poblado?.local_comunal:'-'}}</li>
         </ul>
       </div>
+    </div>
+
+    <div *ngIf="moviles.length>0">
+      <h2>Moviles</h2>
+    
+      <table class="tbt-operador">
+        <thead>
+          <td>OPERADOR</td>
+          <td>2G</td>
+          <td>3G</td>
+          <td>4G</td>
+          <td>5G</td>
+          <td>VOZ</td>
+          <td>SMS</td>
+          <td>MMS</td>
+        </thead>
+        <tr li *ngFor="let data of moviles">
+          <td>
+            {{data.EMPRESA_OPERADORA}}
+          </td>
+          <td>
+            {{data.ES2G === '1' ? 'SI' : 'NO' }}
+          </td>
+          <td>
+            {{data.ES3G === '1' ? 'SI' : 'NO' }}
+          </td>
+          <td>
+            {{data.ES4G === '1' ? 'SI' : 'NO' }}
+          </td>
+          <td>
+            {{data.ES5G === '1' ? 'SI' : 'NO' }}
+          </td>
+          <td>
+            {{data.VOZ === '1' ? 'SI' : 'NO' }}
+          
+          </td>
+          <td>
+            {{data.SMS === '1' ? 'SI' : 'NO' }}
+          </td>
+          <td>
+            {{data.MMS === '1' ? 'SI' : 'NO' }}
+          </td>
+        </tr>
+      </table>
+
+      <ul>
+        
+      </ul>
     </div>
   </section>

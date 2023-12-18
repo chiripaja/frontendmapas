@@ -14,6 +14,7 @@ import { ReporteEncuestaComponent } from './encuesta/reporte-encuesta/reporte-en
 import { ListadoProyectoComponent } from './proyectos/listado-proyecto/listado-proyecto.component';
 import { CrearProyectoComponent } from './proyectos/crear-proyecto/crear-proyecto.component';
 import { ProyectoDetalleCrearComponent } from './proyectos/proyecto-detalle-crear/proyecto-detalle-crear.component';
+import { InfoComponent } from './info/info.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
     ]
   },
   { path: 'encuesta', component: ListadoEncuestaComponent },
+  { path: 'info', component: InfoComponent },
   { path: '**', redirectTo: '' }
 ];
 

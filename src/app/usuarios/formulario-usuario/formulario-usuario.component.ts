@@ -11,7 +11,6 @@ export class FormularioUsuarioComponent implements OnInit{
   @Input() modelo?:IUsuario;
   @Output() datosFormulario=new EventEmitter<IUsuario>();
   ngOnInit(): void {    
-   console.log(this.modelo)
       if(this.modelo!==undefined){     
         this.form.patchValue(this.modelo)
       }    

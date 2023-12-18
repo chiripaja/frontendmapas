@@ -108,8 +108,7 @@ export class ListadoEncuestaComponent implements OnInit {
     }
   }
 
-  limpiar() {
-    console.log("entrando...")
+  limpiar() {   
     this.distritos = []
     this.poblados = []
     this.colegios=[]
