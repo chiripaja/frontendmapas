@@ -50,42 +50,35 @@
 
 
       <ng-container matColumnDef="resinternet">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef>resinternet</th>
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>Internet</th>
         <td mat-cell *matCellDef="let element"> {{element.resinternet}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="ressproveedor">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef>ressproveedor</th>
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>Proveedor</th>
         <td mat-cell *matCellDef="let element"> {{element.ressproveedor}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="respproveedorotro">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef>respproveedorotro</th>
-        <td mat-cell *matCellDef="let element"> {{element.respproveedorotro}} </td>
-      </ng-container>
-
+     
       <ng-container matColumnDef="resvelocidad">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef>resvelocidad</th>
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>Velocidad</th>
         <td mat-cell *matCellDef="let element"> {{element.resvelocidad}} </td>
       </ng-container>
 
       <ng-container matColumnDef="respermite">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef>respermite</th>
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>Permite Trabajar</th>
         <td mat-cell *matCellDef="let element"> {{element.respermite}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="resproblem">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef>resproblem</th>
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>Problema</th>
         <td mat-cell *matCellDef="let element"> {{element.resproblem}} </td>
       </ng-container>
 
 
-      <ng-container matColumnDef="resproblemotro">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef>resproblemotro</th>
-        <td mat-cell *matCellDef="let element"> {{element.resproblemotro}} </td>
-      </ng-container>
+    
 
 
       <ng-container matColumnDef="resresponsable">
@@ -96,6 +89,13 @@
       <ng-container matColumnDef="rescosto">
         <th mat-sort-header mat-header-cell *matHeaderCellDef>rescosto</th>
         <td mat-cell *matCellDef="let element"> {{element.rescosto}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opciones">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>opciones</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-flat-button color="primary" (click)="actualizar()">Validar</button>
+        </td>
       </ng-container>
 
        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

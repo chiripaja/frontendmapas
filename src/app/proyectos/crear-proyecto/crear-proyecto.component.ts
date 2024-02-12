@@ -27,7 +27,7 @@ export class CrearProyectoComponent {
     if (this.form.value.fechaini && this.form.value.fechafin) {
       const fechaini = new Date(this.form.value.fechaini);
       const fechafin = new Date(this.form.value.fechafin);
-      console.log("fehca inicio :"+fechaini)
+      console.log("fecha inicio :"+fechaini)
       
       
       this.proyecto = {

@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Ireporteencuesta } from 'src/app/interfaces/ireporteencuesta';
 import { RespuestaService } from 'src/app/services/respuesta.service';
 import * as XLSX from 'xlsx';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-reporte-encuesta',
   templateUrl: './reporte-encuesta.component.html',
@@ -15,7 +16,7 @@ export class ReporteEncuestaComponent implements AfterViewInit {
   respuestas: Ireporteencuesta[] = []
   datasource: any;
   //displayedColumns: string[] = ['id', 'provincia', 'distrito', 'NombreIE', 'NivelModalidad', 'resinternet', 'ressproveedor', 'respproveedorotro', 'resvelocidad', 'respermite', 'resproblem', 'resproblemotro', 'resresponsable', 'rescosto', 'resnomape', 'ressexo', 'resnumcelular', 'rescorreo'];
-  displayedColumns: string[] = [ 'provincia', 'distrito', 'NombreIE', 'NivelModalidad', 'resinternet', 'ressproveedor', 'respproveedorotro', 'resvelocidad', 'respermite', 'resproblem', 'resproblemotro', 'resresponsable', 'rescosto'];
+  displayedColumns: string[] = [ 'provincia', 'distrito', 'NombreIE', 'NivelModalidad', 'resinternet', 'ressproveedor', 'resvelocidad', 'respermite', 'resproblem', 'resresponsable', 'rescosto' ,'opciones'];
   loading: boolean = true;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -58,6 +59,16 @@ export class ReporteEncuestaComponent implements AfterViewInit {
   Filter(data:any){
     const value=(data.target as HTMLInputElement).value;
    this.datasource.filter=value;
+  }
+
+  actualizar(){
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Se actualizo correctamente.",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
 }
