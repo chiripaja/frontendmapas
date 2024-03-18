@@ -49,9 +49,16 @@ export class PobladosmapaComponent implements OnInit {
   ngOnInit(): void {
     this.provinciaServices.findall().subscribe(data => this.provincias = data)
     this.form.valueChanges.subscribe(valores => {
-      valores?.provinciacod ? this.buscarDistrito(valores?.provinciacod) : null,
-        valores?.distritocod ? this.buscarPoblado(valores?.distritocod) : null,
-        valores?.pobladocod ? this.buscarMapaData(valores?.pobladocod) : null
+      console.log(valores)
+      if (valores && valores.provinciacod) {
+        this.buscarDistrito(valores.provinciacod);
+      }
+      if (valores && valores.distritocod) {
+        this.buscarPoblado(valores.distritocod);
+      }
+      if (valores && valores.pobladocod) {
+        this.buscarMapaData(valores.pobladocod);
+      }
     })
   }
 
@@ -88,6 +95,7 @@ export class PobladosmapaComponent implements OnInit {
 
   buscarDistrito(codprov: any) {   
     if (codprov) {     
+      console.log(codprov)
       const dato: Iprovincia | undefined = this.provincias.find(provincia => provincia.codigo === codprov);
       dato ? this.ubicarMapa(dato?.latitud1, dato?.longitud1, dato?.latitud2, dato?.longitud2) : ''
       this.distritoServices.findByIdProvincia(codprov).subscribe(data => {
@@ -147,10 +155,14 @@ export class PobladosmapaComponent implements OnInit {
 
 
   limpiar() {
-    this.form.get('distritocod')?.setValue('');
-    this.form.get('pobladocod')?.setValue('');
-    this.distritos = []
-    this.poblados = []
+    this.form.patchValue({
+      distritocod: '', // Establece el valor del campo distritocod como una cadena vacía
+      pobladocod: ''   // Establece el valor del campo pobladocod como una cadena vacía
+    });
+  
+    // Limpia los arreglos distritos y poblados
+    this.distritos = [];
+    this.poblados = [];
   }
   guardarCambios(data: any) {
     

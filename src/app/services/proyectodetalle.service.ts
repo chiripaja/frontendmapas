@@ -23,5 +23,9 @@ export class ProyectodetalleService {
   public findata(id:number){
     return this.http.get<Iproyectodetalledto[]>(`${this.apiURL}/findData/${id}`)
   }
+
+  public findDataExcel(id:number){
+    return this.http.get<Iproyectodetalledto[]>(`${this.apiURL}/findDataExcel/${id}`)
+  }
   
 }

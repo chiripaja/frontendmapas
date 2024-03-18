@@ -21,7 +21,7 @@
       <mat-form-field appearance="outline" class="mt-2 animate__animated animate__fadeIn ">
         <mat-label>Password</mat-label>
         <input matInput placeholder="Ingrese Contraseña" type="password" formControlName="password" [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre('password')}}</mat-error>
